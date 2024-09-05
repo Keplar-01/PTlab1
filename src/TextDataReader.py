@@ -10,6 +10,7 @@ class TextDataReader(DataReader):
 
     def read(self, path: str) -> DataType:
         with open(path, encoding='utf-8') as file:
+            if True: return False
             for line in file:
                 if not line.startswith(" "):
                     self.key = line.strip()
