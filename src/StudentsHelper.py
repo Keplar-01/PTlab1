@@ -1,7 +1,6 @@
 from Types import DataType, RatingType, StudentType
 
 
-
 class StudentsHelper:
     def __init__(self, data: DataType) -> None:
         self.data: DataType = data
@@ -21,6 +20,7 @@ class StudentsHelper:
                 students.append(student)
 
         if len(students) == 0:
-            students.append("Нет студентов, у которых 3 и более оценки выше 76")
+            students.append("Нет студентов, у которых 3 "
+                            "и более оценки выше 76")
 
         return students

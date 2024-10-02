@@ -3,6 +3,7 @@ import pytest
 from src.Types import DataType
 from src.YAMLDataReader import YAMLDataReader
 
+
 class TestYAMLDataReader:
 
     @pytest.fixture()
@@ -23,12 +24,14 @@ class TestYAMLDataReader:
         return yaml_content, expected_data
 
     @pytest.fixture()
-    def yaml_filepath_and_data(self, yaml_file_and_data_content: tuple[str, DataType],
-                               tmpdir) -> tuple[str, DataType]:
+    def filepath_and_data(self,
+                          yaml_file_and_data_content: tuple[str, DataType],
+                          tmpdir) -> tuple[str, DataType]:
         p = tmpdir.mkdir("datadir").join("my_data.yaml")
         p.write_text(yaml_file_and_data_content[0], encoding='utf-8')
         return str(p), yaml_file_and_data_content[1]
 
-    def test_yaml_read(self, yaml_filepath_and_data: tuple[str, DataType]) -> None:
+    def test_yaml_read(self,
+                       yaml_filepath_and_data: tuple[str, DataType]) -> None:
         file_content = YAMLDataReader().read(yaml_filepath_and_data[0])
         assert file_content == yaml_filepath_and_data[1]
